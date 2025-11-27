@@ -1,0 +1,72 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h1 class="h4 mb-1">Змінні для автозаповнення</h1>
+                        <p class="text-muted mb-0 small">Додавайте ключ та опис — ключ відповідає плейсхолдеру {KEY} у Word-шаблоні</p>
+                    </div>
+                </div>
+                <form method="post" class="row g-3">
+                    <input type="hidden" name="action" value="add">
+                    <div class="col-md-5">
+                        <label for="key" class="form-label">Ключ змінної</label>
+                        <input class="form-control" id="key" name="key" placeholder="VESSEL_TYPE" required>
+                    </div>
+                    <div class="col-md-7">
+                        <label for="description" class="form-label">Опис змінної</label>
+                        <input class="form-control" id="description" name="description" placeholder="Тип судна / призначення" required>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit">Зберегти змінну</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h6 mb-3">Збережені змінні</h2>
+                {% if variables %}
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Ключ (у Word: {KEY})</th>
+                                    <th>Опис</th>
+                                    <th class="text-end">Дії</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for var in variables %}
+                                    <tr>
+                                        <td><span class="fw-semibold">{{ var.key }}</span></td>
+                                        <td>
+                                            {{ var.description or '—' }}
+                                            {% if var.auto_created %}
+                                                <span class="badge bg-info text-dark ms-2">авто</span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-end">
+                                            <form method="post" class="d-inline">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="hidden" name="doc_id" value="{{ var.doc_id }}">
+                                                <button class="btn btn-sm btn-outline-danger" type="submit">Видалити</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">Поки немає змінних. Додайте ключі (наприклад, COMPANY, VESSEL_IMO, PORT), щоб використовувати їх у шаблоні.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

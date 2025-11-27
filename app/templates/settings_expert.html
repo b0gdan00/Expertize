@@ -1,0 +1,28 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h1 class="h4 mb-1">Профіль експерта</h1>
+                        <p class="text-muted mb-0 small">Уся інформація однією стрічкою — буде використовуватись при автозаповненні</p>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="expert_details" class="form-label">Рядок із даними про експерта</label>
+                        <textarea class="form-control" id="expert_details" name="expert_details" rows="3" placeholder="ПІБ, посада, ліцензія, контакти одним рядком" required>{{ expert_details }}</textarea>
+                        <div class="form-text">Наприклад: "Іваненко Іван, судновий експерт, посвідчення №123, +380501234567, ivan@example.com"</div>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a class="btn btn-outline-secondary" href="{{ url_for('main.home') }}">Назад</a>
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

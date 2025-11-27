@@ -1,0 +1,22 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-xl-4">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h4 mb-3 text-center">Авторизація експерта</h1>
+                <p class="text-muted small text-center">Введіть ім’я, щоб перейти до заповнення шаблону експертизи</p>
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="expert_name" class="form-label">Ім’я експерта</label>
+                        <input type="text" class="form-control" id="expert_name" name="expert_name" value="{{ expert_details or '' }}" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Увійти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

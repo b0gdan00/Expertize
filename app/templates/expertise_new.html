@@ -1,0 +1,53 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h1 class="h4 mb-1">Нова експертиза</h1>
+                        <p class="text-muted mb-0 small">Заповніть значення лише для створених змінних — їх буде підставлено у Word-шаблон</p>
+                    </div>
+                    <span class="badge bg-primary">Експерт: {{ current_expert or '—' }}</span>
+                </div>
+                <form method="post">
+                    {% if variables %}
+                        <div class="row g-3">
+                            {% for var in variables %}
+                                <div class="col-md-6">
+                                    <label class="form-label" for="var_{{ var.doc_id }}">
+                                        {{ var.description or 'Змінна без опису' }}
+                                        <span class="badge bg-light text-dark ms-2">{ {{ var.key }} }</span>
+                                        {% if var.auto_created %}
+                                            <span class="badge bg-info text-dark ms-1">авто</span>
+                                        {% endif %}
+                                    </label>
+                                    <input class="form-control" id="var_{{ var.doc_id }}" name="var_{{ var.doc_id }}" placeholder="Значення для {{ var.key }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center gap-2 mt-4 flex-wrap">
+                            {% if template_meta.filename %}
+                                <div class="text-muted small">Шаблон: {{ template_meta.filename }}</div>
+                            {% else %}
+                                <div class="text-danger small">Шаблон не завантажено</div>
+                            {% endif %}
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-secondary" href="{{ url_for('main.variables_settings') }}">Керувати змінними</a>
+                                <button type="submit" name="action" value="save" class="btn btn-outline-primary">Зберегти чернетку</button>
+                                <button type="submit" name="action" value="render" class="btn btn-primary" {% if not template_meta.filename %}disabled{% endif %}>Згенерувати та скачати</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p class="text-muted mb-0">Немає жодної змінної. Спершу додайте їх у розділі «Змінні», щоб заповнювати шаблон.</p>
+                        <div class="mt-3">
+                            <a class="btn btn-primary" href="{{ url_for('main.variables_settings') }}">Додати змінні</a>
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

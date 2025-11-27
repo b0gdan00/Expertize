@@ -1,0 +1,80 @@
+{
+  "expert_profile": {
+    "1": {
+      "full_name": "Богдан",
+      "kind": "profile",
+      "details": "Богдан"
+    }
+  },
+  "variables": {
+    "1": {
+      "key": "num_post",
+      "description": "Номер постанови"
+    },
+    "2": {
+      "key": "nuumber",
+      "description": "",
+      "auto_created": true
+    },
+    "3": {
+      "key": "name",
+      "description": "",
+      "auto_created": true
+    },
+    "4": {
+      "key": "текст",
+      "description": "",
+      "auto_created": true
+    }
+  },
+  "expertises": {
+    "1": {
+      "expert": "Богдан",
+      "variables": {
+        "num_post": ""
+      }
+    },
+    "2": {
+      "expert": "Богдан",
+      "variables": {
+        "num_post": "1",
+        "nuumber": "1",
+        "name": "Богдан",
+        "текст": "Писюн )))"
+      }
+    },
+    "3": {
+      "expert": "Богдан",
+      "variables": {
+        "num_post": "111",
+        "nuumber": "111",
+        "name": "111",
+        "текст": "1111"
+      }
+    },
+    "4": {
+      "expert": "Богдан",
+      "variables": {
+        "num_post": "",
+        "nuumber": "",
+        "name": "",
+        "текст": ""
+      }
+    },
+    "5": {
+      "expert": "Богдан",
+      "variables": {
+        "num_post": "",
+        "nuumber": "",
+        "name": "",
+        "текст": ""
+      }
+    }
+  },
+  "templates": {
+    "1": {
+      "kind": "template",
+      "filename": "template.docx"
+    }
+  }
+}

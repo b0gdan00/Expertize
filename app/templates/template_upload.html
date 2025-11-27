@@ -1,0 +1,34 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h4 mb-3">Шаблон експертизи</h1>
+                <p class="text-muted small mb-4">Завантажте Word (.docx). Знайдемо всі плейсхолдери у фігурних дужках {KEY} і створимо змінні автоматично (опис буде пустим та позначений як авто).</p>
+
+                <form method="post" enctype="multipart/form-data" class="d-flex flex-column gap-3">
+                    <div>
+                        <label for="template_file" class="form-label">Файл .docx</label>
+                        <input class="form-control" type="file" id="template_file" name="template_file" accept=".docx" required>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2">
+                        <a class="btn btn-outline-secondary" href="{{ url_for('main.home') }}">Назад</a>
+                        <button class="btn btn-primary" type="submit">Завантажити</button>
+                    </div>
+                </form>
+
+                {% if template_meta.filename %}
+                    <hr class="my-4">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <div class="fw-semibold">Поточний шаблон:</div>
+                            <div class="text-muted">{{ template_meta.filename }}</div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
