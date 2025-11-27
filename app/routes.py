@@ -43,7 +43,7 @@ def new_expertise():
     expert_id = session.get("expert_id")
     expert = db.get_expert(expert_id) if expert_id else None
     if not expert:
-        flash("Ви не авторизовані, будь ласка", "warning")
+        flash("Ви не авторизовані!", "warning")
         return redirect(url_for("main.home"))
 
     variables = db.list_variables(expert_id)
@@ -90,7 +90,7 @@ def expert_settings():
     expert_id = session.get("expert_id")
     expert = db.get_expert(expert_id) if expert_id else None
     if not expert:
-        flash("Ви не авторизовані, будь ласка", "warning")
+        flash("Ви не авторизовані!", "warning")
         return redirect(url_for("main.home"))
 
     current_details = db.get_expert_details(expert_id)
@@ -111,7 +111,7 @@ def expert_settings():
 def variables_settings():
     expert_id = session.get("expert_id")
     if not expert_id:
-        flash("Ви не авторизовані, будь ласка", "warning")
+        flash("Ви не авторизовані!", "warning")
         return redirect(url_for("main.home"))
 
     if request.method == "POST":
@@ -139,7 +139,7 @@ def variables_settings():
 def upload_template():
     expert_id = session.get("expert_id")
     if not expert_id:
-        flash("Ви не авторизовані, будь ласка", "warning")
+        flash("Ви не авторизовані!", "warning")
         return redirect(url_for("main.home"))
 
     template_meta = db.get_template_metadata()
