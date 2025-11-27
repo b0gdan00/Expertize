@@ -6,19 +6,19 @@
             <div class="card-body p-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div>
-                        <h1 class="h4 mb-1">Змінні для автозаповнення</h1>
-                        <p class="text-muted mb-0 small">Додавайте ключ та опис — ключ відповідає плейсхолдеру {KEY} у Word-шаблоні</p>
+                        <h1 class="h4 mb-1">Змінні для заповнення</h1>
+                        <p class="text-muted mb-0 small">Список зберігається окремо для кожного експерта. Використовуйте ключ у форматі {KEY} у Word-шаблоні.</p>
                     </div>
                 </div>
                 <form method="post" class="row g-3">
                     <input type="hidden" name="action" value="add">
                     <div class="col-md-5">
                         <label for="key" class="form-label">Ключ змінної</label>
-                        <input class="form-control" id="key" name="key" placeholder="VESSEL_TYPE" required>
+                        <input class="form-control" id="key" name="key" placeholder="Наприклад: POSADA" required>
                     </div>
                     <div class="col-md-7">
                         <label for="description" class="form-label">Опис змінної</label>
-                        <input class="form-control" id="description" name="description" placeholder="Тип судна / призначення" required>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Як розшифрувати, що тут заповнювати" required></textarea>
                     </div>
                     <div class="col-12 d-flex justify-content-end">
                         <button class="btn btn-primary" type="submit">Зберегти змінну</button>
@@ -37,7 +37,7 @@
                                 <tr>
                                     <th>Ключ (у Word: {KEY})</th>
                                     <th>Опис</th>
-                                    <th class="text-end">Дії</th>
+                                    <th class="text-end">Дія</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,7 +63,7 @@
                         </table>
                     </div>
                 {% else %}
-                    <p class="text-muted mb-0">Поки немає змінних. Додайте ключі (наприклад, COMPANY, VESSEL_IMO, PORT), щоб використовувати їх у шаблоні.</p>
+                    <p class="text-muted mb-0">Ще немає збережених змінних. Додайте кілька, наприклад COMPANY, NAME, PHONE, щоб користуватися шаблоном.</p>
                 {% endif %}
             </div>
         </div>

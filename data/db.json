@@ -8,23 +8,10 @@
   },
   "variables": {
     "1": {
-      "key": "num_post",
-      "description": "Номер постанови"
-    },
-    "2": {
-      "key": "nuumber",
-      "description": "",
-      "auto_created": true
-    },
-    "3": {
-      "key": "name",
-      "description": "",
-      "auto_created": true
-    },
-    "4": {
-      "key": "текст",
-      "description": "",
-      "auto_created": true
+      "expert_id": 1,
+      "key": "123123",
+      "description": "1231231312",
+      "auto_created": false
     }
   },
   "expertises": {
@@ -75,6 +62,16 @@
     "1": {
       "kind": "template",
       "filename": "template.docx"
+    }
+  },
+  "experts": {
+    "1": {
+      "name": "Богдан",
+      "details": ""
+    },
+    "2": {
+      "name": "111",
+      "details": ""
     }
   }
 }
